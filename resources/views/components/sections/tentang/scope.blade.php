@@ -41,7 +41,7 @@
 
         <!-- High-Impact CTA Button Only -->
         <div class="mt-24 text-center">
-             <a href="https://wa.me/6281234567890" class="inline-flex items-center gap-6 bg-primary px-12 py-6 rounded-full shadow-2xl shadow-primary/40 hover:bg-secondary transition-all duration-500 group active:scale-95">
+             <a href="https://wa.me/6285609009009" class="inline-flex items-center gap-6 bg-primary px-12 py-6 rounded-full shadow-2xl shadow-primary/40 hover:bg-secondary transition-all duration-500 group active:scale-95">
                 <span class="text-white font-black text-sm sm:text-xl uppercase tracking-[0.2em]">Pesan Sekarang</span>
                 <i class="ri-whatsapp-line text-white text-3xl transition-transform group-hover:scale-110 group-hover:rotate-12"></i>
              </a>

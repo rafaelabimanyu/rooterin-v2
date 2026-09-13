@@ -7,8 +7,18 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/area/{city}', [\App\Http\Controllers\LocalSeoController::class, 'cityLanding'])->name('local.city');
-Route::get('/area/{city}/{service}', [\App\Http\Controllers\LocalSeoController::class, 'show'])->name('local.service');
+// Silo Geo-Targeting Routes
+Route::get('/jasa-pelancar-saluran-mampet', [\App\Http\Controllers\LocalSeoController::class, 'hub'])->name('local.hub');
+Route::get('/jasa-pipa-mampet/{city}', [\App\Http\Controllers\LocalSeoController::class, 'cityLanding'])->name('local.city');
+Route::get('/jasa-pipa-mampet/{city}/{service}', [\App\Http\Controllers\LocalSeoController::class, 'show'])->name('local.service');
+
+// 301 Permanent Redirects for Legacy /area/* URLs
+Route::get('/area/{city}', function($city) {
+    return redirect("/jasa-pipa-mampet/{$city}", 301);
+});
+Route::get('/area/{city}/{service}', function($city, $service) {
+    return redirect("/jasa-pipa-mampet/{$city}/{$service}", 301);
+});
 
 Route::get('/api/search/suggest', [\App\Http\Controllers\SearchController::class, 'suggest'])->name('api.search.suggest');
 Route::post('/api/phantom/introspect', [\App\Http\Controllers\Api\PhantomIntrospectionController::class, 'introspect'])->middleware('throttle:phantom-api')->name('api.phantom.introspect');

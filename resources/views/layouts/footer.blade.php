@@ -52,20 +52,37 @@
                         @endforeach
                     </ul>
                 </div>
-                <!-- Support -->
+                <!-- Area Layanan Utama (SEO Silo Links) -->
                 <div>
-                    <h4 class="text-white font-black text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
-                        <span class="w-2 h-2 bg-accent rounded-full"></span> Jangkauan
+                    <h4 class="text-white font-black text-xs uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+                        <span class="w-2 h-2 bg-accent rounded-full"></span> Area Layanan
                     </h4>
-                    <ul class="space-y-4 text-gray-400 font-bold text-[11px] uppercase tracking-wider">
-                        @php
-                            $targetCities = \App\Models\SeoCity::where('is_active', true)->limit(5)->get();
-                        @endphp
-                        @foreach($targetCities as $city)
-                        <li><a href="{{ route('local.city', $city->slug) }}" class="hover:text-accent transition-colors">RooterIn {{ $city->name }}</a></li>
-                        @endforeach
-                        <li><a href="{{ route('services') }}" class="text-white/30 hover:text-accent italic">Lihat Semua Wilayah...</a></li>
-                    </ul>
+                    <div class="space-y-4">
+                        <div>
+                            <span class="text-[9px] text-primary font-black uppercase tracking-widest block mb-1.5">Jabodetabek</span>
+                            <ul class="space-y-1 text-gray-400 font-bold text-[11px]">
+                                <li><a href="{{ route('local.city', 'jakarta-selatan') }}" class="hover:text-accent transition-colors">RooterIN Jakarta Selatan</a></li>
+                                <li><a href="{{ route('local.city', 'tangerang') }}" class="hover:text-accent transition-colors">RooterIN Tangerang</a></li>
+                                <li><a href="{{ route('local.city', 'bekasi') }}" class="hover:text-accent transition-colors">RooterIN Bekasi</a></li>
+                                <li><a href="{{ route('local.city', 'depok') }}" class="hover:text-accent transition-colors">RooterIN Depok</a></li>
+                                <li><a href="{{ route('local.city', 'bogor') }}" class="hover:text-accent transition-colors">RooterIN Bogor</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-primary font-black uppercase tracking-widest block mb-1.5">Jawa Tengah</span>
+                            <ul class="space-y-1 text-gray-400 font-bold text-[11px]">
+                                <li><a href="{{ route('local.city', 'semarang') }}" class="hover:text-accent transition-colors">RooterIN Semarang</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-primary font-black uppercase tracking-widest block mb-1.5">Sumatera</span>
+                            <ul class="space-y-1 text-gray-400 font-bold text-[11px]">
+                                <li><a href="{{ route('local.city', 'bandar-lampung') }}" class="hover:text-accent transition-colors">RooterIN Bandar Lampung</a></li>
+                                <li><a href="{{ route('local.city', 'metro-lampung') }}" class="hover:text-accent transition-colors">RooterIN Metro</a></li>
+                            </ul>
+                        </div>
+                        <a href="{{ route('local.hub') }}" class="text-white/40 hover:text-accent text-[10px] font-black uppercase tracking-widest block pt-2">Lihat Semua Area &rarr;</a>
+                    </div>
                 </div>
                 <!-- Contact (Unique Icon Style) -->
                 <div class="col-span-2 md:col-span-1">
@@ -74,13 +91,13 @@
                     </h4>
                     <div class="flex flex-col gap-4">
                         <!-- WhatsApp Card -->
-                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6281292059125')) }}" class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-primary/30 transition-all duration-300 group cursor-pointer">
+                        <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) }}" class="flex items-center gap-4 bg-white/5 p-4 rounded-2xl border border-white/5 hover:border-primary/30 transition-all duration-300 group cursor-pointer">
                             <div class="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-all duration-500 shadow-sm">
                                 <i class="ri-whatsapp-line text-xl"></i>
                             </div>
                             <div>
                                 <div class="text-[10px] text-gray-500 font-bold uppercase tracking-wider mb-0.5">Call & WA</div>
-                                <div class="text-white font-black text-sm tracking-wide leading-none">{{ \App\Models\Setting::get('whatsapp_number', '0812-9205-9125') }}</div>
+                                <div class="text-white font-black text-sm tracking-wide leading-none">{{ \App\Models\Setting::get('whatsapp_number', '0856-0900-9009') }}</div>
                             </div>
                         </a>
                         <!-- Response Card -->

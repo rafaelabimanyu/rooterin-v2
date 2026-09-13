@@ -22,6 +22,7 @@ class SitemapController extends Controller
                 route('tips'),
                 route('harga'),
                 route('contact'),
+                route('local.hub'),
             ];
 
             // 2. Halaman tips/artikel (Post dengan status published)

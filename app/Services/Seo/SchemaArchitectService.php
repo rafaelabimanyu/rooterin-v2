@@ -22,7 +22,7 @@ class SchemaArchitectService
             'image' => url('/logo-dark.png'),
             '@id' => url('/'),
             'url' => url('/'),
-            'telephone' => '+6281234567890',
+            'telephone' => '+' . preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')),
             'address' => [
                 '@type' => 'PostalAddress',
                 'streetAddress' => 'Jl. Pipa Mampet No. 123',

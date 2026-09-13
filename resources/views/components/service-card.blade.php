@@ -44,7 +44,7 @@
         </p>
         
         <!-- CTA Link -->
-        <a href="https://wa.me/6281234567890?text=Halo%20Rooter%20Green%2C%20mau%20order%20{{ urlencode($title) }}" 
+        <a href="https://wa.me/6285609009009?text=Halo%20Rooter%20Green%2C%20mau%20order%20{{ urlencode($title) }}" 
            @class([
                'inline-flex items-center font-bold text-sm tracking-tight group/link',
                'text-primary' => $color === 'primary',

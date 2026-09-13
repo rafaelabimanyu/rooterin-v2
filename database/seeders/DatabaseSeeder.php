@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             WikiEntitySeeder::class,
             WikiPipaSeeder::class,
             TipsBulkSeeder::class,
+            SeoCitySeeder::class,
         ]);
     }
 }

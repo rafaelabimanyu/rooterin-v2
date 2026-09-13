@@ -38,7 +38,7 @@
                 @endif
 
                 <div class="flex flex-col sm:flex-row items-center gap-6">
-                    <a href="https://wa.me/6281234567890?text=Halo%20Admin%20RooterIn%20{{ $city->name }}%2C%20saya%20butuh%20{{ $service->name }}" 
+                    <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) }}?text=Halo%20Admin%20RooterIn%20{{ $city->name }}%2C%20saya%20butuh%20{{ $service->name }}" 
                        onclick="trackWhatsAppClick('local-service-page')"
                        class="w-full sm:w-auto px-10 py-5 bg-primary text-white rounded-full font-black text-lg hover:bg-[#e65a00] hover:scale-105 transition-all shadow-2xl shadow-primary/30 text-center">
                         Panggil Teknisi Sekarang

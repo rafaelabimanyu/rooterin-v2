@@ -5,15 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="OvNhTcRWHYd9JhvzkmvuFnVlrrmH9fMcoAJRRUx6EGw" />
+
     {!! \Artesaos\SEOTools\Facades\SEOTools::generate() !!}
-    
-    <!-- Open Graph / SEO Meta Tags -->
-    <meta name="description" content="RooterIn menyediakan jasa saluran mampet profesional, pembersihan pipa, cuci toren, dan instalasi sanitary tanpa proses bongkar dan bergaransi 30 hari.">
-    <meta property="og:title" content="RooterIn - Jasa Saluran Mampet & Pipe Cleaning Premium">
-    <meta property="og:description" content="Mengatasi pipa mampet, wastafel tersumbat, dan saluran pembuangan air kotor secara tuntas tanpa membongkar pipa Anda. Hubungi teknisi kami 24 jam!">
-    <meta property="og:image" content="{{ asset('images/logo.png') }}">
-    <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:type" content="website">
     
     {{-- Hreflang Automator --}}
     {!! $hreflangTags ?? '' !!}
@@ -32,7 +27,7 @@
       "@@id": "{{ url('/') }}/#rooterin-business",
       "name": "RooterIN",
       "legalName": "RooterIN - Jasa Saluran Mampet Profesional",
-      "description": "RooterIN adalah jasa plumbing & saluran mampet terpercaya yang melayani wilayah Jabodetabek, Bali, Bandung, Serang, Lampung dan kota-kota besar Indonesia. Teknisi tersertifikasi, fast response 24 jam.",
+      "description": "RooterIN adalah jasa plumbing & saluran mampet terpercaya yang melayani wilayah Jabodetabek, Semarang, Lampung dan sekitarnya. Teknisi tersertifikasi, fast response 24 jam.",
       "url": "{{ url('/') }}",
       "logo": {
         "@@type": "ImageObject",
@@ -43,7 +38,7 @@
       "image": [
         "{{ url('/images/logo.png') }}"
       ],
-      "telephone": "+62-812-9205-9125",
+      "telephone": "+62-856-0900-9009",
       "email": "hello@rooterin.com",
       "priceRange": "Rp 600.000 - Rp 2.500.000",
       "currenciesAccepted": "IDR",
@@ -75,16 +70,14 @@
         { "@@type": "City", "name": "Depok" },
         { "@@type": "City", "name": "Tangerang" },
         { "@@type": "City", "name": "Bekasi" },
-        { "@@type": "City", "name": "Bandung" },
-        { "@@type": "City", "name": "Serang" },
-        { "@@type": "City", "name": "Lampung" },
-        { "@@type": "City", "name": "Denpasar" },
-        { "@@type": "City", "name": "Badung" },
-        { "@@type": "City", "name": "Gianyar" },
+        { "@@type": "City", "name": "Semarang" },
+        { "@@type": "City", "name": "Bandar Lampung" },
+        { "@@type": "City", "name": "Metro" },
         { "@@type": "State", "name": "DKI Jakarta" },
         { "@@type": "State", "name": "Jawa Barat" },
+        { "@@type": "State", "name": "Jawa Tengah" },
         { "@@type": "State", "name": "Banten" },
-        { "@@type": "State", "name": "Bali" }
+        { "@@type": "State", "name": "Lampung" }
       ],
       "serviceArea": {
         "@@type": "GeoCircle",
@@ -99,7 +92,7 @@
         "https://www.instagram.com/rooterin",
         "https://www.facebook.com/rooterin",
         "https://www.tiktok.com/@rooterin",
-        "https://wa.me/6281292059125"
+        "https://wa.me/6285609009009"
       ],
       "aggregateRating": {
         "@@type": "AggregateRating",

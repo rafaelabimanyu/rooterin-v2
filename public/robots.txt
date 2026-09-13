@@ -9,6 +9,11 @@ Allow: /
 User-agent: Googlebot
 Disallow: /admin/
 Disallow: /login
-Allow: /sitemap.xml
+Allow: /
+
+User-agent: Bingbot
+Disallow: /admin/
+Disallow: /login
+Allow: /
 
 Sitemap: https://rooterin.com/sitemap.xml

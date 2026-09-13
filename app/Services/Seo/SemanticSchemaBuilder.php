@@ -32,7 +32,7 @@ class SemanticSchemaBuilder
             ->name($settings->get('site_name', config('app.name')))
             ->description($settings->get('meta_description', ''))
             ->url(config('app.url'))
-            ->telephone('0812-9205-9125')
+            ->telephone('0856-0900-9009')
             ->priceRange($settings->get('schema_price_range', '$$'))
             ->image(asset('images/logo.png'))
             ->address(

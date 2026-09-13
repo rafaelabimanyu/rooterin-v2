@@ -183,7 +183,7 @@
                                 <div class="mt-20 p-10 bg-secondary rounded-[3rem] text-white">
                                     <h3 class="text-white !mt-0">Butuh Bantuan Lebih Lanjut?</h3>
                                     <p class="text-gray-400 mb-8">Jika langkah di atas belum berhasil, kemungkinan ada benda keras yang menyangkut. Tim RooterIN siap membantu dengan alat spiral modern.</p>
-                                    <a href="https://wa.me/6281234567890" class="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-2xl font-black uppercase text-[11px] tracking-widest shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                                    <a href="https://wa.me/6285609009009" class="inline-flex items-center gap-3 px-8 py-4 bg-primary text-white rounded-2xl font-black uppercase text-[11px] tracking-widest shadow-xl shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
                                         <i class="ri-whatsapp-line text-xl"></i>
                                         Panggil Teknisi
                                     </a>
@@ -236,7 +236,7 @@
                             <div class="relative z-10">
                                 <h4 class="text-secondary font-black text-xl mb-4 leading-tight">Konsultasi Gratis <br><span class="text-primary italic">Masalah Pipa</span></h4>
                                 <p class="text-gray-400 text-sm mb-8 leading-relaxed">Tanya teknisi kami langsung lewat WhatsApp untuk estimasi biaya dan solusi.</p>
-                                <a href="https://wa.me/6281234567890" class="flex items-center justify-center gap-3 w-full py-5 bg-secondary text-white rounded-[2rem] font-black uppercase text-[10px] tracking-widest hover:bg-primary transition-all shadow-xl shadow-secondary/10">
+                                <a href="https://wa.me/6285609009009" class="flex items-center justify-center gap-3 w-full py-5 bg-secondary text-white rounded-[2rem] font-black uppercase text-[10px] tracking-widest hover:bg-primary transition-all shadow-xl shadow-secondary/10">
                                     <i class="ri-customer-service-2-line text-xl"></i>
                                     Chat Sekarang
                                 </a>
@@ -345,7 +345,7 @@
                 </h2>
                 
                 <!-- Large Prominent White Pill Button (Separate Named Group) -->
-                <a href="https://wa.me/{{ \App\Models\Setting::get('whatsapp_number', '6281292059125') }}" 
+                <a href="https://wa.me/{{ \App\Models\Setting::get('whatsapp_number', '6285609009009') }}" 
                    class="inline-flex items-center gap-4 sm:gap-6 bg-white px-8 sm:px-12 lg:px-16 py-4 sm:py-5 lg:py-7 rounded-full shadow-[0_30px_60px_rgba(0,0,0,0.4)] hover:bg-primary transition-all duration-500 group/btn active:scale-95">
                     <span class="text-primary group-hover/btn:text-white font-black text-xs sm:text-base lg:text-xl uppercase tracking-widest transition-colors flex items-center gap-3 sm:gap-4">
                         Hubungi Tim Kami

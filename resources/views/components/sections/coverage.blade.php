@@ -3,12 +3,10 @@
     'subtitle' => 'Area Jangkauan Terdekat',
     'description' => 'Jaringan teknisi profesional kami tersebar luas untuk menjamin <span class="text-primary font-bold">Fast-Response 15 Menit</span> di setiap titik layanan.',
     'cities' => [
-        ['name' => 'JABODETABEK', 'img' => asset('images/pages/home/region/jabodetabek.png'), 'tag' => 'Pusat Operasional'],
-        ['name' => 'CIREBON', 'img' => asset('images/pages/home/region/cirebon.png'), 'tag' => 'Jawa Barat Area'],
-        ['name' => 'SEMARANG', 'img' => asset('images/pages/home/region/semarang.png'), 'tag' => 'Jawa Tengah Area'],
-        ['name' => 'YOGYAKARTA', 'img' => asset('images/pages/home/region/yogyakarta.png'), 'tag' => 'D.I. Yogyakarta'],
-        ['name' => 'LAMPUNG', 'img' => asset('images/pages/home/region/lampung.png'), 'tag' => 'Sumatera Area'],
-        ['name' => 'METRO', 'img' => asset('images/pages/home/region/metro.png'), 'tag' => 'Sumatera Area'],
+        ['name' => 'JABODETABEK', 'slug' => 'jakarta-selatan', 'img' => asset('images/pages/home/region/jabodetabek.webp'), 'tag' => 'Pusat Operasional Utama'],
+        ['name' => 'SEMARANG', 'slug' => 'semarang', 'img' => asset('images/pages/home/region/semarang.webp'), 'tag' => 'Jawa Tengah Area'],
+        ['name' => 'BANDAR LAMPUNG', 'slug' => 'bandar-lampung', 'img' => asset('images/pages/home/region/lampung.webp'), 'tag' => 'Sumatera Area'],
+        ['name' => 'METRO LAMPUNG', 'slug' => 'metro-lampung', 'img' => asset('images/pages/home/region/metro.webp'), 'tag' => 'Sumatera Area'],
     ]
 ])
 
@@ -27,9 +25,9 @@
         </div>
 
         <!-- City Network Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
             @foreach($cities as $city)
-                <div class="group relative bg-white border border-gray-100 rounded-[2.5rem] p-6 flex items-center gap-6 shadow-xl shadow-gray-100/50 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:border-[#1FAF5A]/50">
+                <a href="{{ route('local.city', $city['slug']) }}" class="group relative bg-white border border-gray-100 rounded-[2.5rem] p-6 flex items-center gap-6 shadow-xl shadow-gray-100/50 transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-2xl hover:border-[#1FAF5A]/50">
                     <div class="w-20 h-20 rounded-2xl overflow-hidden shadow-md flex-shrink-0 group-hover:scale-105 transition-transform duration-500 bg-gray-100">
                         <img src="{{ $city['img'] }}" class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" alt="Tim teknisi Rooterin melayani area {{ $city['name'] }} dan sekitarnya">
                     </div>
@@ -41,7 +39,7 @@
                             <span class="text-gray-400 text-[10px] font-bold uppercase tracking-tight">Active Team</span>
                         </div>
                     </div>
-                </div>
+                </a>
             @endforeach
         </div>
 

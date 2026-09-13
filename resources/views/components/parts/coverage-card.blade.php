@@ -3,8 +3,8 @@
     'title' => 'Hadir Lebih Dekat <br> di <span class="text-primary italic">Setiap Sudut Kota</span>',
     'description' => 'Kami menempatkan pangkalan teknisi di titik-titik strategis untuk memastikan pengerjaan tepat waktu. Tidak perlu menunggu lama, teknisi ahli kami siap meluncur ke lokasi Anda.',
     'tags' => ['Sertifikasi Resmi', 'Alat Modern', 'Respon Cepat', 'Garansi Tuntas'],
-    'badgeTitle' => 'Cakupannya <br> Jawa & Sumatera',
-    'badgeDesc' => 'Armada teknisi kami beroperasi penuh di wilayah <span class="text-white font-bold">Jabodetabek, Jawa Barat, hingga Lampung & Metro.</span>'
+    'badgeTitle' => 'Cakupannya <br> Jabodetabek, Semarang & Lampung',
+    'badgeDesc' => 'Armada teknisi kami beroperasi penuh di wilayah <span class="text-white font-bold">Jabodetabek, Semarang, hingga Lampung & Metro.</span>'
 ])
 
 <div {{ $attributes->merge(['class' => 'relative bg-secondary rounded-[2.5rem] sm:rounded-[4rem] p-6 sm:p-20 overflow-hidden group shadow-3xl']) }}>
@@ -48,7 +48,7 @@
                     {!! $badgeDesc !!}
                 </p>
 
-                <x-button href="https://wa.me/6281234567890?text=Halo%20Rooter%20Green%2C%20apakah%20melayani%20wilayah..." variant="primary" class="w-full !py-4 shadow-xl !rounded-xl sm:!rounded-2xl">
+                <x-button href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) }}?text=Halo%20RooterIn%2C%20apakah%20melayani%20wilayah..." variant="primary" class="w-full !py-4 shadow-xl !rounded-xl sm:!rounded-2xl">
                     Tanya Wilayah Lainnya
                 </x-button>
             </div>

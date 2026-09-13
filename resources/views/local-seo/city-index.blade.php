@@ -10,7 +10,7 @@
             <nav class="flex items-center justify-center lg:justify-start gap-2 text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-10">
                 <a href="{{ route('home') }}">Home</a>
                 <i class="ri-arrow-right-s-line"></i>
-                <span class="text-primary italic">Layanan Area</span>
+                <a href="{{ route('local.hub') }}" class="text-primary italic hover:underline">Area Layanan</a>
                 <i class="ri-arrow-right-s-line"></i>
                 <span class="text-white">{{ $city->name }}</span>
             </nav>
@@ -31,7 +31,7 @@
             </p>
 
             <div class="flex flex-col sm:flex-row items-center gap-6">
-                <a href="https://wa.me/6281234567890?text=Halo%20Admin%20RooterIn%20{{ $city->name }}%2C%20saya%20butuh%20bantuan%20pipa%20mampet" class="w-full sm:w-auto px-10 py-5 bg-primary text-white rounded-full font-black text-lg hover:bg-[#e65a00] hover:scale-105 transition-all shadow-2xl shadow-primary/30 text-center">
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) }}?text=Halo%20Admin%20RooterIn%20{{ $city->name }}%2C%20saya%20butuh%20bantuan%20pipa%20mampet" class="w-full sm:w-auto px-10 py-5 bg-primary text-white rounded-full font-black text-lg hover:bg-[#e65a00] hover:scale-105 transition-all shadow-2xl shadow-primary/30 text-center">
                     Hubungi Teknisi {{ $city->name }}
                 </a>
             </div>
