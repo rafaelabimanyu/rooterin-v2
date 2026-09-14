@@ -49,4 +49,30 @@
             <priority>0.8</priority>
         </url>
     @endforeach
+
+    {{-- Districts --}}
+    @if(isset($districts))
+    @foreach ($districts as $district)
+        @if($district->city)
+        <url>
+            <loc>{{ route('local.district', ['city' => $district->city->slug, 'district' => $district->slug]) }}</loc>
+            <lastmod>{{ $district->updated_at->tz('UTC')->toAtomString() }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.85</priority>
+        </url>
+        @endif
+    @endforeach
+    @endif
+
+    {{-- District Services --}}
+    @if(isset($districtServices))
+    @foreach ($districtServices as $ds)
+        <url>
+            <loc>{{ route('local.district.service', ['city' => $ds['city_slug'], 'district' => $ds['district_slug'], 'service' => $ds['service_slug']]) }}</loc>
+            <lastmod>{{ $ds['updated_at']->tz('UTC')->toAtomString() }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.75</priority>
+        </url>
+    @endforeach
+    @endif
 </urlset>

@@ -7,9 +7,11 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->middleware('throttle:5,1');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Silo Geo-Targeting Routes
+// Silo Geo-Targeting Routes (City & Programmatic District Architecture)
 Route::get('/jasa-pelancar-saluran-mampet', [\App\Http\Controllers\LocalSeoController::class, 'hub'])->name('local.hub');
 Route::get('/jasa-pipa-mampet/{city}', [\App\Http\Controllers\LocalSeoController::class, 'cityLanding'])->name('local.city');
+Route::get('/jasa-pipa-mampet/{city}/{district}/{service}', [\App\Http\Controllers\LocalSeoController::class, 'districtService'])->name('local.district.service');
+Route::get('/jasa-pipa-mampet/{city}/{district}', [\App\Http\Controllers\LocalSeoController::class, 'districtLanding'])->name('local.district');
 Route::get('/jasa-pipa-mampet/{city}/{service}', [\App\Http\Controllers\LocalSeoController::class, 'show'])->name('local.service');
 
 // 301 Permanent Redirects for Legacy /area/* URLs
@@ -57,8 +59,16 @@ Route::get('/tips/{slug}', [\App\Http\Controllers\TipsController::class, 'show']
 Route::get('/harga', [\App\Http\Controllers\HargaController::class, 'index'])->name('harga');
 
 Route::get('/kontak', function () {
+    \Artesaos\SEOTools\Facades\SEOTools::setTitle('Kontak & Layanan Darurat 24 Jam - RooterIN');
+    \Artesaos\SEOTools\Facades\SEOTools::setDescription('Hubungi teknisi RooterIN 24 jam via Call / WhatsApp. Layanan cepat pelancar pipa mampet area Jabodetabek, Semarang, dan Lampung.');
+    \Artesaos\SEOTools\Facades\SEOTools::setCanonical(url('/kontak'));
     return view('kontak');
 })->name('contact');
+
+// E-E-A-T & Trustability Core Routes (J&J Group Holding)
+Route::get('/holding-legalitas', [\App\Http\Controllers\HoldingController::class, 'index'])->name('holding.legalitas');
+Route::get('/garansi-layanan', [\App\Http\Controllers\GaransiController::class, 'index'])->name('garansi.layanan');
+Route::get('/b2b-layanan-komersial', [\App\Http\Controllers\B2bController::class, 'index'])->name('b2b.komersial');
 
 Route::get('/panduan-aksesibilitas', function () {
     return view('panduan-aksesibilitas');

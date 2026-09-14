@@ -46,8 +46,8 @@
                     <h4 class="text-white font-black text-xs uppercase tracking-[0.2em] mb-8 flex items-center gap-3">
                         <span class="w-2 h-2 bg-primary rounded-full"></span> Navigasi
                     </h4>
-                    <ul class="space-y-5 text-gray-400 font-bold text-sm">
-                        @foreach(['Home' => '/', 'About Us' => '/tentang', 'Service' => '/layanan', 'Gallery' => '/galeri', 'Contact' => '/kontak'] as $label => $link)
+                    <ul class="space-y-4 text-gray-400 font-bold text-sm">
+                        @foreach(['Home' => '/', 'About Us' => '/tentang', 'Service' => '/layanan', 'Gallery' => '/galeri', 'Contact' => '/kontak', 'Holding & Legalitas' => route('holding.legalitas'), 'Klaim Garansi 30 Hari' => route('garansi.layanan'), 'Solusi B2B Komersial' => route('b2b.komersial')] as $label => $link)
                             <li><a href="{{ $link }}" class="hover:text-primary transition-colors hover:translate-x-1 inline-block transition-transform duration-300">{{ $label }}</a></li>
                         @endforeach
                     </ul>

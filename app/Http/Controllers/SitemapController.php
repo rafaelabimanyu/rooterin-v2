@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\WikiEntity;
 use App\Models\SeoCity;
+use App\Models\SeoDistrict;
 use App\Models\Service;
 use Illuminate\Http\Request;
 
@@ -23,6 +24,9 @@ class SitemapController extends Controller
                 route('harga'),
                 route('contact'),
                 route('local.hub'),
+                route('holding.legalitas'),
+                route('garansi.layanan'),
+                route('b2b.komersial'),
             ];
 
             // 2. Halaman tips/artikel (Post dengan status published)
@@ -35,7 +39,7 @@ class SitemapController extends Controller
             $cities = SeoCity::where('is_active', true)->orderBy('updated_at', 'desc')->get();
 
             // 5. Halaman kota-layanan (SeoCity x Service)
-            $services = Service::all();
+            $services = Service::where('is_active', true)->get();
             $cityServices = [];
             foreach ($cities as $city) {
                 foreach ($services as $service) {
@@ -47,12 +51,30 @@ class SitemapController extends Controller
                 }
             }
 
+            // 6. Halaman Kecamatan & Kecamatan-Layanan (SeoDistrict Programmatic)
+            $districts = SeoDistrict::with('city')->where('is_active', true)->orderBy('updated_at', 'desc')->get();
+            $districtServices = [];
+            foreach ($districts as $district) {
+                if ($district->city && $district->city->is_active) {
+                    foreach ($services as $service) {
+                        $districtServices[] = [
+                            'city_slug' => $district->city->slug,
+                            'district_slug' => $district->slug,
+                            'service_slug' => $service->slug,
+                            'updated_at' => max($district->updated_at, $service->updated_at)
+                        ];
+                    }
+                }
+            }
+
             return view('sitemap', [
                 'staticUrls' => $staticUrls,
                 'posts' => $posts,
                 'wikis' => $wikis,
                 'cities' => $cities,
                 'cityServices' => $cityServices,
+                'districts' => $districts,
+                'districtServices' => $districtServices,
             ])->render();
         });
 

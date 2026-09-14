@@ -5,12 +5,18 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Models\Project;
 use App\Models\Testimonial;
-use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        SEOTools::setTitle('Jasa Saluran Pipa Mampet No. 1 Tanpa Bongkar - RooterIN');
+        SEOTools::setDescription('Jasa pelancar saluran pipa mampet tersumbat profesional Jabodetabek, Semarang & Lampung. Menggunakan mesin Ridgid modern tanpa bongkar & garansi 30 hari.');
+        SEOTools::setCanonical(url('/'));
+        SEOTools::opengraph()->setUrl(url('/'));
+        SEOTools::opengraph()->addProperty('type', 'website');
+        SEOTools::opengraph()->addImage(asset('images/og-image.png'));
         $services = Service::where('is_active', true)->take(3)->get()->map(function ($s, $index) {
             $colors = ['primary', 'accent', 'secondary'];
             $gallery = is_array($s->gallery) ? $s->gallery : json_decode($s->gallery, true) ?? [];

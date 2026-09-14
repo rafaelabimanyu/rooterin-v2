@@ -17,20 +17,21 @@
     {!! $semanticSchema ?? '' !!}
 
     {{-- ================================================================
-         ENTITY AUTHORITY SCHEMA — LocalBusiness + Organization
-         Full E-E-A-T & Local SEO Signal for Google Domination
+         GLOBAL ENTITY AUTHORITY SCHEMA — Organization (J&J Group Holding)
+         Prevents schema collision with page-specific LocalBusiness schemas
          ================================================================ --}}
     <script type="application/ld+json">
     {
       "@@context": "https://schema.org",
-      "@@type": ["LocalBusiness", "PlumbingContractor"],
-      "@@id": "{{ url('/') }}/#rooterin-business",
+      "@type": "Organization",
+      "@id": "{{ url('/') }}/#organization",
       "name": "RooterIN",
-      "legalName": "RooterIN - Jasa Saluran Mampet Profesional",
-      "description": "RooterIN adalah jasa plumbing & saluran mampet terpercaya yang melayani wilayah Jabodetabek, Semarang, Lampung dan sekitarnya. Teknisi tersertifikasi, fast response 24 jam.",
+      "legalName": "RooterIN - Naungan J&J Group Holding",
+      "alternateName": ["RooterIN Indonesia", "Jasa Saluran Mampet RooterIN"],
+      "description": "RooterIN adalah penyedia layanan plumbing, deteksi & pelancar saluran pipa mampet profesional di bawah naungan J&J Group Holding.",
       "url": "{{ url('/') }}",
       "logo": {
-        "@@type": "ImageObject",
+        "@type": "ImageObject",
         "url": "{{ url('/images/logo.png') }}",
         "width": 200,
         "height": 60
@@ -40,119 +41,15 @@
       ],
       "telephone": "+62-856-0900-9009",
       "email": "hello@rooterin.com",
-      "priceRange": "Rp 600.000 - Rp 2.500.000",
-      "currenciesAccepted": "IDR",
-      "paymentAccepted": "Cash, Transfer Bank, QRIS",
-      "address": {
-        "@@type": "PostalAddress",
-        "streetAddress": "Jakarta Selatan",
-        "addressLocality": "Jakarta",
-        "addressRegion": "DKI Jakarta",
-        "postalCode": "12000",
-        "addressCountry": "ID"
-      },
-      "geo": {
-        "@@type": "GeoCoordinates",
-        "latitude": "-6.2088",
-        "longitude": "106.8456"
-      },
-      "openingHoursSpecification": [
-        {
-          "@@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
-          "opens": "00:00",
-          "closes": "23:59"
-        }
-      ],
-      "areaServed": [
-        { "@@type": "City", "name": "Jakarta" },
-        { "@@type": "City", "name": "Bogor" },
-        { "@@type": "City", "name": "Depok" },
-        { "@@type": "City", "name": "Tangerang" },
-        { "@@type": "City", "name": "Bekasi" },
-        { "@@type": "City", "name": "Semarang" },
-        { "@@type": "City", "name": "Bandar Lampung" },
-        { "@@type": "City", "name": "Metro" },
-        { "@@type": "State", "name": "DKI Jakarta" },
-        { "@@type": "State", "name": "Jawa Barat" },
-        { "@@type": "State", "name": "Jawa Tengah" },
-        { "@@type": "State", "name": "Banten" },
-        { "@@type": "State", "name": "Lampung" }
-      ],
-      "serviceArea": {
-        "@@type": "GeoCircle",
-        "geoMidpoint": {
-          "@@type": "GeoCoordinates",
-          "latitude": "-6.2088",
-          "longitude": "106.8456"
-        },
-        "geoRadius": "500000"
-      },
       "sameAs": [
         "https://www.instagram.com/rooterin",
         "https://www.facebook.com/rooterin",
         "https://www.tiktok.com/@rooterin",
         "https://wa.me/6285609009009"
       ],
-      "aggregateRating": {
-        "@@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "bestRating": "5",
-        "worstRating": "1",
-        "ratingCount": "247",
-        "reviewCount": "189"
-      },
-      "hasOfferCatalog": {
-        "@@type": "OfferCatalog",
-        "name": "Jasa Plumbing & Saluran Mampet",
-        "itemListElement": [
-          {
-            "@@type": "Offer",
-            "itemOffered": {
-              "@@type": "Service",
-              "name": "Jasa Saluran Mampet",
-              "description": "Bersihkan saluran pembuangan mampet dengan mesin spiral modern tanpa bongkar."
-            },
-            "price": "600000",
-            "priceCurrency": "IDR",
-            "availability": "https://schema.org/InStock"
-          },
-          {
-            "@@type": "Offer",
-            "itemOffered": {
-              "@@type": "Service",
-              "name": "Cuci Toren & Tangki Air",
-              "description": "Sterilisasi tangki air bersih dari lumut dan sedimentasi."
-            },
-            "price": "200000",
-            "priceCurrency": "IDR",
-            "availability": "https://schema.org/InStock"
-          },
-          {
-            "@@type": "Offer",
-            "itemOffered": {
-              "@@type": "Service",
-              "name": "Instalasi Sanitary & Pipa",
-              "description": "Pemasangan kloset, kran, dan jalur pipa baru dengan standar profesional."
-            },
-            "price": "0",
-            "priceCurrency": "IDR",
-            "priceSpecification": {
-              "@@type": "PriceSpecification",
-              "description": "Harga berdasarkan survey lokasi"
-            },
-            "availability": "https://schema.org/InStock"
-          }
-        ]
-      },
-      "knowsAbout": [
-        "Plumbing", "Saluran Mampet", "Pipa PVC", "Instalasi Sanitary",
-        "Cuci Toren", "Grease Trap", "Septic Tank", "Hydro Jetting"
-      ],
-      "founder": {
-        "@@type": "Person",
-        "name": "Tim Ahli RooterIN",
-        "jobTitle": "Master Plumber"
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "J&J Group Holding"
       }
     }
     </script>

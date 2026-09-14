@@ -24,6 +24,11 @@ class SeoCity extends Model
         return $this->hasMany(LocalizedReview::class);
     }
 
+    public function districts()
+    {
+        return $this->hasMany(SeoDistrict::class);
+    }
+
     /**
      * Map precision GeoCoordinates for SERP Local SEO Schema
      */

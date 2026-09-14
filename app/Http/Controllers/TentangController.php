@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\FaqCategory;
-use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
 
 class TentangController extends Controller
 {
     public function index()
     {
+        SEOTools::setTitle('Tentang Kami - Profil RooterIN & J&J Group Holding');
+        SEOTools::setDescription('Mengenal RooterIN, penyedia jasa pelancar saluran mampet profesional di bawah naungan J&J Group Holding. Komitmen layanan amanah, ramah lingkungan & garansi 30 hari.');
+        SEOTools::setCanonical(url('/tentang'));
+        SEOTools::opengraph()->setUrl(url('/tentang'));
+        SEOTools::opengraph()->addProperty('type', 'website');
         $faqCategories = FaqCategory::with(['faqs' => function($query) {
             $query->about()->orderBy('order');
         }])->orderBy('order')->get()->filter(function($cat) {
