@@ -1,78 +1,63 @@
 {!! '<'.'?xml version="1.0" encoding="UTF-8"?'.'>' !!}
+{!! '<'.'?xml-stylesheet type="text/xsl" href="/sitemap.xsl"?'.'>' !!}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    {{-- Static URLs --}}
+    {{-- Halaman Statis Utama --}}
     @foreach ($staticUrls as $url)
         <url>
             <loc>{{ $url }}</loc>
             <lastmod>{{ now()->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>daily</changefreq>
-            <priority>0.8</priority>
+            <priority>1.0</priority>
         </url>
     @endforeach
 
-    {{-- Posts / Tips --}}
-    @foreach ($posts as $post)
-        <url>
-            <loc>{{ route('tips.detail', $post->slug) }}</loc>
-            <lastmod>{{ $post->updated_at->tz('UTC')->toAtomString() }}</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>0.7</priority>
-        </url>
-    @endforeach
-
-    {{-- Wikis --}}
-    @foreach ($wikis as $wiki)
-        <url>
-            <loc>{{ route('wiki.detail', $wiki->slug) }}</loc>
-            <lastmod>{{ $wiki->updated_at->tz('UTC')->toAtomString() }}</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>0.6</priority>
-        </url>
-    @endforeach
-
-    {{-- Cities --}}
+    {{-- Halaman Kota Aktif --}}
     @foreach ($cities as $city)
+        @if(!empty($city->slug))
         <url>
-            <loc>{{ route('local.city', $city->slug) }}</loc>
-            <lastmod>{{ $city->updated_at->tz('UTC')->toAtomString() }}</lastmod>
+            <loc>{{ route('local.city', ['city' => $city->slug]) }}</loc>
+            <lastmod>{{ $city->updated_at ? $city->updated_at->tz('UTC')->toAtomString() : now()->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.9</priority>
         </url>
+        @endif
     @endforeach
 
-    {{-- City Services --}}
-    @foreach ($cityServices as $cs)
-        <url>
-            <loc>{{ route('local.service', ['city' => $cs['city_slug'], 'service' => $cs['service_slug']]) }}</loc>
-            <lastmod>{{ $cs['updated_at']->tz('UTC')->toAtomString() }}</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>0.8</priority>
-        </url>
-    @endforeach
-
-    {{-- Districts --}}
+    {{-- Halaman Kecamatan Aktif --}}
     @if(isset($districts))
     @foreach ($districts as $district)
-        @if($district->city)
+        @if(!empty($district->slug) && $district->city && !empty($district->city->slug) && $district->city->is_active)
         <url>
             <loc>{{ route('local.district', ['city' => $district->city->slug, 'district' => $district->slug]) }}</loc>
-            <lastmod>{{ $district->updated_at->tz('UTC')->toAtomString() }}</lastmod>
+            <lastmod>{{ $district->updated_at ? $district->updated_at->tz('UTC')->toAtomString() : now()->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>weekly</changefreq>
-            <priority>0.85</priority>
+            <priority>0.8</priority>
         </url>
         @endif
     @endforeach
     @endif
 
-    {{-- District Services --}}
-    @if(isset($districtServices))
-    @foreach ($districtServices as $ds)
+    {{-- Posts / Artikel Tips --}}
+    @foreach ($posts as $post)
+        @if(!empty($post->slug))
         <url>
-            <loc>{{ route('local.district.service', ['city' => $ds['city_slug'], 'district' => $ds['district_slug'], 'service' => $ds['service_slug']]) }}</loc>
-            <lastmod>{{ $ds['updated_at']->tz('UTC')->toAtomString() }}</lastmod>
+            <loc>{{ route('tips.detail', ['slug' => $post->slug]) }}</loc>
+            <lastmod>{{ $post->updated_at ? $post->updated_at->tz('UTC')->toAtomString() : now()->tz('UTC')->toAtomString() }}</lastmod>
             <changefreq>weekly</changefreq>
-            <priority>0.75</priority>
+            <priority>0.7</priority>
         </url>
+        @endif
     @endforeach
-    @endif
+
+    {{-- Wikis --}}
+    @foreach ($wikis as $wiki)
+        @if(!empty($wiki->slug))
+        <url>
+            <loc>{{ route('wiki.detail', ['slug' => $wiki->slug]) }}</loc>
+            <lastmod>{{ $wiki->updated_at ? $wiki->updated_at->tz('UTC')->toAtomString() : now()->tz('UTC')->toAtomString() }}</lastmod>
+            <changefreq>weekly</changefreq>
+            <priority>0.6</priority>
+        </url>
+        @endif
+    @endforeach
 </urlset>

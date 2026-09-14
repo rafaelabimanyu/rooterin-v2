@@ -73,7 +73,10 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Core Web Vitals LCP Hero Image Preload -->
+    <link rel="preload" as="image" href="{{ $heroPreload ?? asset('images/pages/hero1.webp') }}" type="image/webp" fetchpriority="high">
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])

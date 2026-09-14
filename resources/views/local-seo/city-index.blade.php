@@ -1,118 +1,105 @@
 <x-app-layout>
-<section class="relative pt-36 sm:pt-48 pb-40 overflow-hidden bg-slate-900 min-h-screen">
+{{-- HERO SECTION - DEEP TEAL DARK (#061417) WITH RADIAL GLOW --}}
+<section class="relative pt-36 sm:pt-48 pb-32 overflow-hidden bg-[#061417] text-white min-h-[85vh] flex items-center">
+    <!-- Ambient Radial Glow & Background Image -->
     <div class="absolute inset-0 z-0">
-        <img src="{{ asset('images/pages/hero1.webp') }}" class="w-full h-full object-cover opacity-20 grayscale brightness-50" alt="Jasa Saluran Pipa Mampet {{ $city->name }}">
-        <div class="absolute inset-0 bg-gradient-to-b from-slate-900/60 via-slate-900 to-stone-50"></div>
+        <img src="{{ asset('images/pages/hero1.webp') }}" 
+             width="1920"
+             height="1080"
+             loading="eager"
+             decoding="async"
+             class="w-full h-full object-cover opacity-15 grayscale brightness-50" 
+             alt="Jasa Saluran Pipa Mampet {{ $city->name }}">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#061417]/90 via-[#061417]/80 to-[#061417]" style="background: radial-gradient(circle at top right, rgba(16,185,129,0.18), transparent 65%);"></div>
     </div>
-
-    <div class="container mx-auto px-6 relative z-10 text-center lg:text-left">
-        <div class="max-w-4xl mx-auto lg:mx-0">
-            <nav class="flex items-center justify-center lg:justify-start gap-2 text-[10px] font-black uppercase tracking-[0.4em] text-white/40 mb-10">
-                <a href="{{ route('home') }}">Home</a>
-                <i class="ri-arrow-right-s-line"></i>
-                <a href="{{ route('local.hub') }}" class="text-primary italic hover:underline">Area Layanan</a>
-                <i class="ri-arrow-right-s-line"></i>
-                <span class="text-white">{{ $city->name }}</span>
+    
+    <div class="container mx-auto px-4 sm:px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center lg:text-left">
+            <!-- Breadcrumbs -->
+            <nav class="flex items-center justify-center lg:justify-start gap-2 text-xs font-bold uppercase tracking-widest text-slate-400 mb-8 flex-wrap">
+                <a href="{{ route('home') }}" class="hover:text-[#00e599] transition-colors">Home</a>
+                <i class="ri-arrow-right-s-line text-[#10b981]"></i>
+                <a href="{{ route('local.hub') }}" class="hover:text-[#00e599] transition-colors">Area Layanan</a>
+                <i class="ri-arrow-right-s-line text-[#10b981]"></i>
+                <span class="text-[#00e599] font-black">{{ $city->name }}</span>
             </nav>
 
-            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-heading font-black text-white leading-tight mb-8">
-                Jasa Saluran Pipa Mampet <br><span class="text-primary italic">{{ $city->name }}</span> Tanpa Bongkar
+            <!-- Main Heading with Text Gradient -->
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-white leading-tight mb-8 tracking-tight">
+                Jasa Saluran Pipa Mampet <br class="hidden sm:inline" />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-green-400 font-black">
+                    {{ $city->name }}
+                </span> Tanpa Bongkar
             </h1>
 
             @if($city->fresh_headline)
-            <div class="mb-10 px-6 py-4 bg-primary/10 border-l-4 border-primary rounded-r-2xl flex items-center gap-4">
-                <i class="ri-notification-3-line text-primary text-xl animate-pulse"></i>
-                <span class="text-xs font-black text-white uppercase tracking-widest">{{ $city->fresh_headline }}</span>
+            <div class="mb-10 inline-flex items-center gap-3 px-6 py-3 bg-[#132226]/90 border border-[#10b981]/40 rounded-2xl shadow-xl backdrop-blur-md">
+                <i class="ri-flashlight-fill text-[#00e599] text-xl animate-pulse"></i>
+                <span class="text-xs sm:text-sm font-bold text-slate-200 uppercase tracking-wider">{{ $city->fresh_headline }}</span>
             </div>
             @endif
             
-            <p class="text-xl text-slate-400 leading-relaxed mb-12 max-w-2xl">
-                RooterIN hadir sebagai mitra terpercaya warga <strong>{{ $city->name }}</strong> untuk menangani saluran pipa mampet, wastafel tersumbat, dan pembersihan drainase dengan teknologi tercanggih tanpa bongkar.
+            <p class="text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-3xl">
+                RooterIN hadir sebagai mitra terpercaya warga <strong class="text-white font-bold">{{ $city->name }}</strong> untuk menangani saluran pipa mampet, wastafel tersumbat, dan pembersihan drainase dengan teknologi kabel spiral fleksibel tanpa merusak lantai keramik.
             </p>
 
-            <div class="flex flex-col sm:flex-row items-center gap-6">
-                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) }}?text=Halo%20Admin%20RooterIn%20{{ $city->name }}%2C%20saya%20butuh%20bantuan%20pipa%20mampet" class="w-full sm:w-auto px-10 py-5 bg-primary text-white rounded-full font-black text-lg hover:bg-[#e65a00] hover:scale-105 transition-all shadow-2xl shadow-primary/30 text-center">
-                    Hubungi Teknisi {{ $city->name }}
+            <!-- Call to Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                <a href="https://wa.me/{{ preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) }}?text={{ urlencode('Halo Admin RooterIN, saya butuh layanan pelancaran pipa mampet untuk area ' . $city->name . '. Mohon info jadwal teknisi terdekat.') }}" 
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   onclick="trackWhatsAppClick && trackWhatsAppClick('hero_{{ $city->slug }}')"
+                   class="w-full sm:w-auto px-8 py-4 bg-[#10b981] hover:bg-[#00e599] text-slate-950 rounded-2xl font-extrabold text-base transition-all duration-300 shadow-xl shadow-[#10b981]/25 hover:scale-105 flex items-center justify-center gap-3 group">
+                    <i class="ri-whatsapp-line text-2xl"></i>
+                    <span>Hubungi Teknisi {{ $city->name }}</span>
+                    <i class="ri-arrow-right-line text-lg group-hover:translate-x-1 transition-transform"></i>
+                </a>
+
+                <a href="#pricing" class="w-full sm:w-auto px-8 py-4 bg-[#132226]/80 hover:bg-[#132226] text-white border border-[#10b981]/30 hover:border-[#00e599]/60 rounded-2xl font-bold text-base transition-all duration-300 flex items-center justify-center gap-2">
+                    <i class="ri-price-tag-3-line text-[#00e599]"></i>
+                    <span>Lihat Estimasi Biaya</span>
                 </a>
             </div>
-        </div>
-    </div>
-</section>
 
-<!-- Service Selection Grid -->
-<section class="py-32 bg-stone-50">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col lg:flex-row justify-between items-end mb-20 gap-8">
-            <div class="max-w-2xl">
-                <span class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-4 inline-block">Specialized Local Services</span>
-                <h2 class="text-4xl font-heading font-black text-slate-900 mb-6 leading-tight">Layanan Kami di {{ $city->name }}</h2>
-                <p class="text-slate-500 text-lg leading-relaxed">Tim ahli kami di {{ $city->name }} dibekali peralatan berstandar internasional untuk menjamin hasil maksimal.</p>
-            </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($services as $service)
-            <a href="{{ route('local.service', [$city->slug, $service->slug]) }}" class="group p-8 bg-white border border-slate-100 rounded-[2.5rem] hover:bg-secondary hover:border-secondary transition-all duration-500 shadow-sm hover:shadow-2xl">
-                <div class="w-16 h-16 bg-stone-50 rounded-2xl flex items-center justify-center mb-8 group-hover:bg-white/10 transition-colors">
-                    <i class="ri-flashlight-fill text-2xl text-primary group-hover:text-white"></i>
+            <!-- Quick Trust Badges -->
+            <div class="mt-12 pt-8 border-t border-slate-800/80 grid grid-cols-3 gap-4 text-center max-w-xl mx-auto lg:mx-0">
+                <div>
+                    <span class="text-2xl sm:text-3xl font-black text-[#00e599] block">15-30 mnt</span>
+                    <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mt-1">Kedatangan</span>
                 </div>
-                <h3 class="text-2xl font-black text-slate-900 group-hover:text-white mb-4 transition-colors">{{ $service->name }}</h3>
-                <p class="text-slate-500 group-hover:text-white/70 leading-relaxed mb-8 transition-colors">Layanan spesialis {{ $service->name }} di seluruh area {{ $city->name }} dengan estimasi waktu kedatangan 30 menit.</p>
-                <div class="flex items-center gap-3 text-secondary group-hover:text-white font-black text-xs uppercase tracking-widest transition-colors">
-                    Cek Detail & Harga
-                    <i class="ri-arrow-right-line group-hover:translate-x-2 transition-transform"></i>
+                <div>
+                    <span class="text-2xl sm:text-3xl font-black text-white block">30 Hari</span>
+                    <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mt-1">Garansi Tuntas</span>
                 </div>
-            </a>
-            @endforeach
-        </div>
-    </div>
-</section>
-
-<!-- Trust Architect Section -->
-<section class="py-32 bg-white overflow-hidden">
-    <div class="container mx-auto px-6">
-        <div class="flex flex-col lg:flex-row items-center gap-20">
-            <div class="lg:w-1/2">
-                <div class="relative">
-                    <div class="absolute -top-10 -left-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
-                    <img src="{{ asset('images/pages/home/solution_main.webp') }}" loading="lazy" decoding="async" class="relative rounded-[3rem] shadow-2xl grayscale" alt="Pelanggan Puas RooterIN {{ $city->name }}">
-                    
-                    <!-- Floating Stat -->
-                    <div class="absolute -bottom-8 -right-8 p-10 bg-secondary rounded-[3rem] shadow-2xl text-white">
-                        <div class="text-4xl font-black mb-1">500+</div>
-                        <div class="text-[10px] font-black uppercase tracking-widest opacity-60">Puas di {{ $city->name }}</div>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:w-1/2">
-                <span class="text-[10px] font-black text-primary uppercase tracking-[0.3em] mb-4 inline-block">Real Customer Voice</span>
-                <h2 class="text-4xl font-heading font-black text-slate-900 mb-10 leading-tight">Apa Kata Warga <br>{{ $city->name }}?</h2>
-                
-                <div class="space-y-8">
-                    @forelse($cityReviews as $review)
-                    <div class="p-8 bg-stone-50 rounded-3xl border border-slate-100">
-                        <div class="flex gap-1 text-primary text-xs mb-4">
-                            @for($i=0; $i<$review->rating; $i++) <i class="ri-star-fill"></i> @endfor
-                        </div>
-                        <p class="text-slate-600 text-lg italic mb-6">"{{ $review->review_text }}"</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center font-black text-slate-400 text-xs">
-                                {{ substr($review->customer_name, 0, 1) }}
-                            </div>
-                            <div>
-                                <p class="text-sm font-black text-slate-900 uppercase tracking-widest">{{ $review->customer_name }}</p>
-                                <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">{{ $review->location_suburb ?: 'Wilayah ' . $city->name }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    @empty
-                    <p class="text-slate-400 italic">Belum ada review spesifik untuk area ini. Ribuan pelanggan di Indonesia telah mempercayai kami.</p>
-                    @endforelse
+                <div>
+                    <span class="text-2xl sm:text-3xl font-black text-[#00e599] block">0 Rupiah</span>
+                    <span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block mt-1">Jika Tak Lancar</span>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- MODULAR COMPONENT 1: ESTIMASI BIAYA TRANSPARAN (DEEP MIDNIGHT NAVY #0b1220) -->
+<x-pricing-section :namaWilayah="$city->name" />
+
+<!-- MODULAR COMPONENT: CARA KERJA PRAKTIS 4 LANGKAH -->
+<x-workflow-section :namaWilayah="$city->name" />
+
+<!-- MODULAR COMPONENT 2: SPESIALISASI LINTAS SEKTOR (DEEP DARK SLATE #0a1618) -->
+<x-sectors-section :namaWilayah="$city->name" />
+
+<!-- MODULAR COMPONENT: KOMPARASI METODE (ROOTERIN VS TRADISIONAL) -->
+<x-comparison-section :namaWilayah="$city->name" />
+
+<!-- MODULAR COMPONENT 3: KEUNGGULAN UTAMA & MITRA DUMMY -->
+<x-features-partners :namaWilayah="$city->name" />
+
+<!-- MODULAR COMPONENT 4: FOTO WILAYAH & DOKUMENTASI TERINTEGRASI -->
+<x-regional-gallery :namaWilayah="$city->name" :citySlug="$city->slug" />
+
+<!-- MODULAR COMPONENT 5: FAQ ACCORDION & INTERNAL LINKING SEO SILO -->
+<x-faq-interlink :namaWilayah="$city->name" :city="$city" :districts="$districts" />
 
 @isset($schemaJson)
 <script type="application/ld+json">

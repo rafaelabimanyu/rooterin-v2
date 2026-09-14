@@ -11,7 +11,7 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/jasa-pelancar-saluran-mampet', [\App\Http\Controllers\LocalSeoController::class, 'hub'])->name('local.hub');
 Route::get('/jasa-pipa-mampet/{city}', [\App\Http\Controllers\LocalSeoController::class, 'cityLanding'])->name('local.city');
 Route::get('/jasa-pipa-mampet/{city}/{district}/{service}', [\App\Http\Controllers\LocalSeoController::class, 'districtService'])->name('local.district.service');
-Route::get('/jasa-pipa-mampet/{city}/{district}', [\App\Http\Controllers\LocalSeoController::class, 'districtLanding'])->name('local.district');
+Route::get('/jasa-pipa-mampet/{city}/{district}', [\App\Http\Controllers\LocalSeoController::class, 'resolveCitySecondParam'])->name('local.district');
 Route::get('/jasa-pipa-mampet/{city}/{service}', [\App\Http\Controllers\LocalSeoController::class, 'show'])->name('local.service');
 
 // 301 Permanent Redirects for Legacy /area/* URLs

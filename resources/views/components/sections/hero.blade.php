@@ -1,13 +1,13 @@
 @props([
-    'title' => 'Jasa Pelancar Saluran <br> <span class="text-primary italic">Pipa Mampet</span> <br> Tanpa Bongkar!',
-    'subtitle' => 'Trusted Eco-Plumbing Service',
+    'title' => 'Pelancar Saluran <br> <span class="text-primary italic">Pipa Mampet</span> <br> Tanpa Bongkar!',
+    'subtitle' => 'Pelopor Eco-Plumbing Hub Modern',
     'locationTag' => \App\Models\Setting::get('address', 'Jabodetabek, Semarang & Lampung'),
-    'description' => 'Melayani dengan sepenuh hati di wilayah <span class="text-white font-bold">Jabodetabek, Semarang, dan Lampung.</span> Teknisi ahli, pengerjaan cepat, dan hasil maksimal bergaransi.',
-    'ctaText' => 'Pesan Sekarang - Plong!',
-    'ctaLink' => 'https://wa.me/' . preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) . '?text=Halo%20Kak%2C%20mau%20order%20jasa%20dong',
+    'description' => 'RooterIN adalah pelopor <span class="text-white font-bold">Eco-Plumbing Hub Modern</span> di Jabodetabek, Semarang, dan Lampung. Penanganan pipa mampet cepat, bergaransi resmi 30 hari, tanpa soda api & tanpa bongkar keramik.',
+    'ctaText' => 'Pesan Sekarang - Fast Response!',
+    'ctaLink' => 'https://wa.me/' . preg_replace('/[^0-9]/', '', \App\Models\Setting::get('whatsapp_number', '6285609009009')) . '?text=' . urlencode('Halo Admin RooterIN, saya mau konsultasi dan pesan jasa pelancaran pipa mampet.'),
     'featureImage' => 'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&q=80&w=1200',
-    'guaranteeTitle' => 'Garansi Kepuasan',
-    'guaranteeDesc' => 'Pipa mampet mampet lagi dalam 30 hari? Kami perbaiki GRATIS tanpa biaya tambahan apapun.'
+    'guaranteeTitle' => 'Garansi Resmi 30 Hari',
+    'guaranteeDesc' => 'Pipa mampet mampet lagi dalam 30 hari? Kami perbaiki GRATIS tanpa biaya tambahan. No Result No Pay!'
 ])
 
 <section {{ $attributes->merge(['class' => 'relative bg-secondary min-h-[85vh] flex items-center overflow-hidden pt-36 sm:pt-44 lg:pt-48 pb-16 sm:pb-32']) }}>
@@ -55,7 +55,12 @@
             <!-- Right Side Visual / Featured Card -->
             <div class="lg:w-2/5 relative animate-fade-in-up delay-150">
                 <div class="relative w-full aspect-[4/5] rounded-[3rem] overflow-hidden shadow-2xl group border-8 border-white/5">
-                    <img src="{{ asset('images/pages/hero1.webp') }}" alt="Teknisi Rooterin melakukan inspeksi pipa menggunakan drain camera" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
+                    <img src="{{ asset('images/pages/hero1.webp') }}" 
+                         width="800"
+                         height="1000"
+                         loading="eager"
+                         alt="Teknisi RooterIN melakukan pelancaran pipa mampet tanpa bongkar" 
+                         class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000">
                     <div class="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-secondary via-secondary/20 to-transparent">
                         <div class="bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-2xl">
                             <div class="flex items-center gap-3 mb-3">
@@ -72,30 +77,12 @@
         </div>
     </div>
 
-    <!-- Section Transition (Ultra-Smooth Fluid Wave - Gallery Style) -->
+    <!-- Section Transition -->
     <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0] z-20 translate-y-[1px]">
         <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-[120px] sm:h-[180px]">
-            <!-- Layer 1: Soft Accent Ambient -->
             <path fill="var(--color-accent)" opacity="0.1" d="M0,60 C300,120 900,0 1200,60 L1200,120 L0,120 Z" class="animate-wave-very-slow"></path>
-            
-            <!-- Layer 2: Soft Primary Ambient -->
             <path fill="var(--color-primary)" opacity="0.1" d="M0,80 C400,140 800,20 1200,80 L1200,120 L0,120 Z" class="animate-wave-mid"></path>
-            
-            <!-- Layer 3: Main Surface (White) -->
             <path fill="currentColor" class="text-white" d="M0,100 C200,60 400,60 600,100 C800,140 1000,100 1200,60 L1200,120 L0,120 Z"></path>
         </svg>
     </div>
 </section>
-
-<style>
-    @keyframes wave-flow {
-        0%, 100% { transform: translateX(0) skewY(0deg); }
-        50% { transform: translateX(-30px) skewY(0.5deg); }
-    }
-    .animate-wave-very-slow {
-        animation: wave-flow 15s ease-in-out infinite;
-    }
-    .animate-wave-mid {
-        animation: wave-flow 10s ease-in-out infinite;
-    }
-</style>
